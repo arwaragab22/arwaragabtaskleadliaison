@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-
+import { Product } from "./Types/app";
 
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import NavBar from "./Components/Nav";
+import Products from "./Components/Products";
 function App() {
-  const [categories, setCategories] = useState<string[]>([]);
+    const [categories, setCategories] = useState<string[]>([]);
+    const [allProducts, setAllProducts] = useState<Product[]>([]);
   /**  */
   const [selectedCategory, setSelectedCategory] =
     useState<string>("electronics");
@@ -21,6 +22,10 @@ function App() {
       .catch((error) => console.error("Error fetching categories:", error));
 
     /**api get all products  */
+      axios
+      .get("https://fakestoreapi.com/products")
+      .then((response) => setAllProducts(response.data))
+      .catch((error) => console.error("Error fetching products:", error));
   
   }, []);
 
@@ -54,7 +59,10 @@ function App() {
             categories={categories}
             onSelectcategory={handleCategorySelect}
           />
-    
+          <Products
+            Products={allProducts}
+            selectedCategory={selectedCategory}
+          />
         </Box>
       </Container>
     </React.Fragment>
