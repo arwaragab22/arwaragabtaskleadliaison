@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/arwaragabtaskleadliaison/static/css/main.62d44804.css",
+    "main.js": "/arwaragabtaskleadliaison/static/js/main.a61f8dbd.js",
+    "static/js/453.68693753.chunk.js": "/arwaragabtaskleadliaison/static/js/453.68693753.chunk.js",
+    "index.html": "/arwaragabtaskleadliaison/index.html",
+    "main.62d44804.css.map": "/arwaragabtaskleadliaison/static/css/main.62d44804.css.map",
+    "main.a61f8dbd.js.map": "/arwaragabtaskleadliaison/static/js/main.a61f8dbd.js.map",
+    "453.68693753.chunk.js.map": "/arwaragabtaskleadliaison/static/js/453.68693753.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62d44804.css",
+    "static/js/main.a61f8dbd.js"
+  ]
+}
