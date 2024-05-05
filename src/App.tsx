@@ -1,25 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
+
+
+import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import NavBar from "./Components/Nav";
 function App() {
+  const [categories, setCategories] = useState<string[]>([]);
+  /**  */
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("electronics");
+
+  useEffect(() => {
+    /**api get all   cateogry  */
+    axios
+      .get("https://fakestoreapi.com/products/categories")
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.error("Error fetching categories:", error));
+
+    /**api get all products  */
+  
+  }, []);
+
+  const handleCategorySelect = (category: string) => {
+    setSelectedCategory(category);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <React.Fragment>
+      <CssBaseline />
+      <Container
+        maxWidth="xl"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            p: {
+              xs: 0,
+              md: 4,
+            },
+            width: "100%",
+
+            margin: "auto", // Center horizontally and vertically
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <NavBar
+            categories={categories}
+            onSelectcategory={handleCategorySelect}
+          />
+    
+        </Box>
+      </Container>
+    </React.Fragment>
   );
 }
 
